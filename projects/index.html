@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Gen 5 Fertility &mdash; What We'd Build</title>
+<meta name="description" content="Every project, with the steps involved and time estimates.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f7f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<style>
+
+  *,*::before,*::after{box-sizing:border-box}*{margin:0;padding:0}ul,ol{list-style:none}
+  :root{--paper:#f5f7f5;--card:#fbfcfb;--sunk:#ecefec;--ink:#16211f;--ink-muted:#4f5b57;--ink-faint:#626c67;
+    --rule:#dce1de;--rule-firm:#c3ccc7;--accent:#1c6459;--accent-soft:#e4efeb;--signal:#9e4f26;--signal-soft:#f7ece4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;}
+  @media (prefers-color-scheme:dark){:root{--paper:#0e1513;--card:#151e1b;--sunk:#131c1a;--ink:#e7ece9;--ink-muted:#a6b2ad;
+    --ink-faint:#7d8a84;--rule:#253230;--rule-firm:#374641;--accent:#5cbdac;--accent-soft:#172824;--signal:#dd9260;--signal-soft:#251a13;}}
+  :root[data-theme="dark"]{--paper:#0e1513;--card:#151e1b;--sunk:#131c1a;--ink:#e7ece9;--ink-muted:#a6b2ad;
+    --ink-faint:#7d8a84;--rule:#253230;--rule-firm:#374641;--accent:#5cbdac;--accent-soft:#172824;--signal:#dd9260;--signal-soft:#251a13;}
+  :root[data-theme="light"]{--paper:#f5f7f5;--card:#fbfcfb;--sunk:#ecefec;--ink:#16211f;--ink-muted:#4f5b57;--ink-faint:#626c67;
+    --rule:#dce1de;--rule-firm:#c3ccc7;--accent:#1c6459;--accent-soft:#e4efeb;--signal:#9e4f26;--signal-soft:#f7ece4;}
+
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+  strong{font-weight:650}
+  :where(button){background:none;border:0;font:inherit;color:inherit;cursor:pointer}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+  .wrap{max-width:46rem;margin:0 auto;padding:3.5rem 1.5rem 6rem}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+  header{border-bottom:2px solid var(--ink);padding-bottom:1.8rem}
+  header h1{font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.13;margin-top:1.1rem}
+  header p{margin-top:1rem;color:var(--ink-muted);font-family:var(--serif);font-size:1.1rem;max-width:48ch}
+  .meta{margin-top:1.5rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.5rem 1.8rem}
+  .meta b{color:var(--ink);font-weight:500}
+
+  .how{margin-top:2rem;background:var(--accent-soft);border-radius:6px;padding:1.4rem 1.5rem}
+  .how h2{font-size:1.15rem}
+  .how p{margin-top:.7rem;font-size:.95rem}
+  .how .split{margin-top:1.1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.1rem}
+  .how h3{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.4rem}
+  .how li{padding-left:1rem;position:relative;font-size:.9rem;line-height:1.5;margin-top:.35rem}
+  .how li::before{content:"";position:absolute;left:0;top:.6em;width:.32rem;height:.32rem;border-radius:50%;background:var(--accent)}
+
+  .tabs{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:.35rem .2rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule-firm)}
+  .tabs button{white-space:nowrap;padding:.55rem .85rem;border-radius:5px 5px 0 0;font-size:.9rem;color:var(--ink-muted);
+    display:flex;align-items:center;gap:.45rem;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,background .15s}
+  .tabs button:hover{color:var(--ink);background:var(--sunk)}
+  .tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+  .tcount{font-family:var(--mono);font-size:.62rem;background:var(--sunk);color:var(--ink-faint);padding:.1rem .35rem;border-radius:3px}
+  .tabs button[aria-selected="true"] .tcount{background:var(--accent-soft);color:var(--accent)}
+
+  .ptitle{display:none}
+  .blurb{margin:1.4rem 0 1rem;color:var(--ink-muted);font-size:.95rem}
+
+  .proj{background:var(--card);border:1px solid var(--rule);border-radius:6px;margin-top:.7rem;overflow:hidden;transition:border-color .15s}
+  .proj:hover,.proj[data-open="true"]{border-color:var(--rule-firm)}
+  .proj-btn{width:100%;text-align:left;display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;gap:0 .8rem;align-items:start;padding:1.05rem 1.15rem}
+  .proj-btn:hover .pt{color:var(--accent)}
+  .pn{font-family:var(--mono);font-size:.72rem;color:var(--accent);padding-top:.35rem;font-variant-numeric:tabular-nums}
+  .pmain{min-width:0}
+  .pt{display:block;font-family:var(--serif);font-size:1.08rem;font-weight:600;line-height:1.3;transition:color .15s}
+  .ps{display:block;margin-top:.3rem;font-size:.9rem;color:var(--ink-muted);line-height:1.5}
+  .pright{display:flex;align-items:center;gap:.75rem;padding-top:.15rem}
+  .phrs{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .phrs span{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-left:.25rem}
+  .px{font-family:var(--mono);font-size:1.05rem;color:var(--ink-faint);line-height:1}
+  .proj[data-open="true"] .px{color:var(--accent)}
+  @media (max-width:34rem){
+    .proj-btn{grid-template-columns:1.8rem minmax(0,1fr);gap:0 .6rem}
+    .pright{grid-column:2;margin-top:.5rem;padding-top:0;justify-content:space-between}
+  }
+
+  .pbody{padding:0 1.15rem 1.3rem 4.15rem;border-top:1px solid var(--rule)}
+  @media (max-width:34rem){.pbody{padding-left:1.15rem}}
+  .pbody h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:1.1rem 0 .6rem}
+  ol.steps{counter-reset:s;display:flex;flex-direction:column;gap:.6rem}
+  ol.steps li{counter-increment:s;display:grid;grid-template-columns:1.5rem minmax(0,1fr);gap:0 .55rem;font-size:.92rem;line-height:1.55;color:var(--ink-muted)}
+  ol.steps li::before{content:counter(s);font-family:var(--mono);font-size:.68rem;color:var(--accent);padding-top:.28em;font-variant-numeric:tabular-nums}
+  .deliv{margin-top:1.1rem;background:var(--accent-soft);border-radius:5px;padding:.85rem 1rem}
+  .deliv h4{color:var(--accent);margin:0 0 .3rem}
+  .deliv p{font-size:.92rem;color:var(--ink);line-height:1.55}
+
+  .subtotal{margin-top:1.2rem;background:var(--sunk);border-radius:5px;padding:.85rem 1.1rem;display:flex;flex-wrap:wrap;
+    justify-content:space-between;gap:.4rem 1rem;font-size:.9rem;color:var(--ink-muted)}
+  .subtotal b{color:var(--ink);font-family:var(--mono);font-size:.85rem;font-variant-numeric:tabular-nums}
+
+  .foot{margin-top:2.6rem;border-top:2px solid var(--ink);padding-top:1.7rem}
+  .foot h2{font-size:1.2rem}
+  .foot p{margin-top:.9rem;color:var(--ink-muted);font-size:.95rem}
+  .foot .big{background:var(--signal-soft);border-left:3px solid var(--signal);border-radius:0 5px 5px 0;padding:1.1rem 1.2rem;margin-top:1.2rem}
+  .foot .big p{color:var(--ink);margin-top:0}
+  .foot .big p+p{margin-top:.7rem}
+
+  .toolbar{margin-top:1.2rem;display:flex;justify-content:flex-end}
+  .toggle-all{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted);
+    border:1px solid var(--rule-firm);border-radius:100px;padding:.35rem .85rem}
+  .toggle-all:hover{border-color:var(--accent);color:var(--accent)}
+
+  @media print{
+    @page{size:Letter;margin:14mm 15mm}
+    html,body{background:#fff!important}
+    [hidden]{display:block!important}
+    .tabs,.toolbar,.px{display:none!important}
+    .wrap{max-width:none;padding:0}
+    .ptitle{display:block;font-size:15pt;margin-top:22pt;padding-bottom:5pt;border-bottom:2px solid #16211f}
+    .proj,.deliv,.subtotal{break-inside:avoid;page-break-inside:avoid}
+    body{font-size:10pt;line-height:1.42}
+    header h1{font-size:19pt}
+  }
+
+  /* --- theme toggle (standalone site needs its own) --- */
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: var(--card);
+    border: 1px solid var(--rule-firm);
+    border-radius: 100px;
+    padding: .42rem .85rem;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-toggle svg { width: .85rem; height: .85rem; fill: currentColor; }
+  .theme-toggle .icon-dark { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-light { display: none; }
+  @media (max-width: 30rem) {
+    .theme-toggle .label { display: none; }
+    .theme-toggle { padding: .5rem; }
+  }
+  @media print { .theme-toggle { display: none !important; } }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme">
+  <svg class="icon-light" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11a3 3 0 100-6 3 3 0 000 6zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zm8-5a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.06l-1.061 1.061a.75.75 0 11-1.06-1.06l1.06-1.061a.75.75 0 011.06 0zM4.464 11.536a.75.75 0 010 1.06L3.404 13.657a.75.75 0 11-1.06-1.06l1.06-1.061a.75.75 0 011.06 0zm9.193 2.121a.75.75 0 01-1.06 0l-1.061-1.06a.75.75 0 111.06-1.061l1.061 1.06a.75.75 0 010 1.061zM4.464 4.464a.75.75 0 01-1.06 0L2.343 3.404a.75.75 0 011.06-1.06l1.061 1.06a.75.75 0 010 1.06z"/></svg>
+  <svg class="icon-dark" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.2 1.3a7 7 0 108.5 8.5A7.5 7.5 0 016.2 1.3z"/></svg>
+  <span class="label">Theme</span>
+</button>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Gen 5 Fertility &middot; Scope &amp; method</div>
+    <h1>What we&rsquo;d build for you, and exactly how</h1>
+    <p>Every project we&rsquo;ve discussed, with the actual steps involved and an honest estimate of the time each takes.</p>
+    <div class="meta">
+      <span>From <b>Brady Kirtland</b></span>
+      <span><b>19 projects</b></span>
+      <span>Total <b>421&ndash;567 hrs</b></span>
+    </div>
+  </header>
+
+  <div class="how">
+    <h2>How the work actually gets done</h2>
+    <p>I work with <strong>Claude Code</strong> &mdash; an AI system that operates directly on real files: the code behind your site, documents, spreadsheets, data exports. It isn&rsquo;t a chatbot, and your patients never touch it. It&rsquo;s a tool I use on my end, which is what makes this much work possible for one person.</p>
+    <div class="split">
+      <div>
+        <h3>What I do</h3>
+        <ul>
+          <li>Decide what to build and why</li>
+          <li>Review and correct everything produced</li>
+          <li>Talk to you, your staff and your vendors</li>
+          <li>Take responsibility when something&rsquo;s wrong</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the AI does</h3>
+        <ul>
+          <li>The work that&rsquo;s tedious at scale &mdash; 50 pages instead of 5</li>
+          <li>Research and analysis across large amounts of material</li>
+          <li>First drafts of code and content</li>
+          <li>Finding patterns in your data</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1.1rem;font-size:.92rem;color:var(--ink-muted)">Everything happens on a private staged copy first. Nothing reaches your live site until you&rsquo;ve seen it, and nothing medical publishes without a physician signing off.</p>
+  </div>
+
+  <div class="toolbar"><button class="toggle-all" id="toggleAll" aria-expanded="false">Open all</button></div>
+
+  <div class="tabs" role="tablist" aria-label="Project categories">
+    <button role="tab" id="tab-fix-first" aria-controls="panel-fix-first" aria-selected="true" tabindex="0">Fix first<span class="tcount">4</span></button>
+    <button role="tab" id="tab-website" aria-controls="panel-website" aria-selected="false" tabindex="-1">Website<span class="tcount">4</span></button>
+    <button role="tab" id="tab-growth" aria-controls="panel-growth" aria-selected="false" tabindex="-1">Growth<span class="tcount">4</span></button>
+    <button role="tab" id="tab-brand-and-content" aria-controls="panel-brand-and-content" aria-selected="false" tabindex="-1">Brand &amp; content<span class="tcount">4</span></button>
+    <button role="tab" id="tab-operations" aria-controls="panel-operations" aria-selected="false" tabindex="-1">Operations<span class="tcount">2</span></button>
+    <button role="tab" id="tab-ocean-cam" aria-controls="panel-ocean-cam" aria-selected="false" tabindex="-1">Ocean cam<span class="tcount">1</span></button>
+  </div>
+
+  <div role="tabpanel" id="panel-fix-first" aria-labelledby="tab-fix-first" >
+    <h2 class="ptitle">Fix first</h2>
+    <p class="blurb">The cheapest, fastest wins. Two of these are costing you patients today; one closes a legal exposure.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">01</span>
+          <span class="pmain">
+            <span class="pt">Reputation repair</span>
+            <span class="ps">Your BBB profile is an F and your Healthgrades listing tells patients you&rsquo;re not accepting them. Both are fixable this month.</span>
+          </span>
+          <span class="pright"><span class="phrs">10&ndash;14<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Pull every review across Google, Yelp, the BBB, Healthgrades and the fertility sites, and catalogue the recurring themes</li><li>Draft responses to your two open BBB complaints for your approval &mdash; written so they never confirm anyone was a patient</li><li>Claim and correct the Healthgrades profile: the &ldquo;not accepting new patients&rdquo; flag and the hospital affiliations listed in Tahoe, Newport Beach and Sonoma</li><li>Audit your name, address and phone across the major directories and fix every inconsistency</li><li>Correct the outdated practice reference on your Wikipedia entry through proper channels</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A before-and-after record of every listing we changed, and a BBB profile that no longer says F.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">02</span>
+          <span class="pmain">
+            <span class="pt">Search foundation</span>
+            <span class="ps">Search engines currently can&rsquo;t tell you&rsquo;re a medical practice. This is the highest-leverage technical fix available.</span>
+          </span>
+          <span class="pright"><span class="phrs">18&ndash;20<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Crawl all 50 pages and catalogue exactly what markup exists and what&rsquo;s missing</li><li>Write the medical markup: MedicalClinic for the practice, Physician for each provider, MedicalProcedure for each treatment, FAQPage for your Q&amp;A content</li><li>Validate every single page against Google&rsquo;s Rich Results Test &mdash; all 50, not a sample</li><li>Rewrite the page title and description on all 50 pages so they actually name IVF, egg freezing and ovarian rejuvenation</li><li>Fix heading structure, internal linking, image alt text and canonical tags</li><li>Set up Search Console, submit the sitemap, and record where you stand today so improvement is measurable</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A validated site plus a baseline report &mdash; so every later claim of improvement can be checked against a number.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">03</span>
+          <span class="pmain">
+            <span class="pt">Claims &amp; compliance support</span>
+            <span class="ps">Your ovarian rejuvenation pages claim more than the current evidence supports. Your research page doesn&rsquo;t. We align them.</span>
+          </span>
+          <span class="pright"><span class="phrs">10&ndash;15<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Catalogue every efficacy and safety claim currently on those pages</li><li>Pull the current literature and map each claim against what the evidence actually supports</li><li>Draft revised copy that stays compelling but defensible, matching the careful tone your research page already uses</li><li>Package the whole thing for your attorney with sources attached, so their review is quick and inexpensive rather than open-ended</li><li>Implement whatever they approve</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A claims audit, revised pages, and a sourced file your attorney can sign off on.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">04</span>
+          <span class="pmain">
+            <span class="pt">Competitor gap analysis</span>
+            <span class="ps">You compete with clinics carrying far bigger budgets. Competing everywhere isn&rsquo;t realistic; competing where they&rsquo;re weak is.</span>
+          </span>
+          <span class="pright"><span class="phrs">12&ndash;15<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Build the full keyword profile for San Diego Fertility Center, Fertility Specialists Medical Group, Fertility Institute of San Diego and HRC</li><li>Identify every term they rank for that you don&rsquo;t, scored by whether a practice your size can realistically win it</li><li>Compare how each of them handles pricing, success rates and the consultation process, and find the gaps</li><li>Analyse their content structure and publishing cadence</li><li>Turn all of it into a ranked list of specific opportunities</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A written analysis and a prioritised plan &mdash; specific openings, not a general instruction to do more SEO.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>50&ndash;64 hrs</b></div>
+  </div>
+  <div role="tabpanel" id="panel-website" aria-labelledby="tab-website" hidden>
+    <h2 class="ptitle">Website</h2>
+    <p class="blurb">The build work. Most of the hours live here, and it&rsquo;s what everything else points at.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">05</span>
+          <span class="pmain">
+            <span class="pt">Website rebuild</span>
+            <span class="ps">The structure underneath your site is genuinely good. The pages that decide whether someone books are doing a fraction of what they could.</span>
+          </span>
+          <span class="pright"><span class="phrs">60&ndash;80<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Audit the current templates, page speed and where people drop off</li><li>Design and rebuild the pages that convert: home, IVF, egg freezing, ovarian rejuvenation, provider profiles and the booking path</li><li>Work on a private staged copy in version control &mdash; you review every page before anything reaches the live site</li><li>Rebuild the route to booking: fewer steps, and clear expectations about what a first consultation actually involves</li><li>Compress and resize images, defer non-critical scripts, trim CSS &mdash; measured before and after, not asserted</li><li>Run a WCAG accessibility audit and fix what it finds</li><li>Build a real pricing and financing page, and present your success rates clearly</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>Rebuilt pages, a speed report with before-and-after numbers, and an accessibility report.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">06</span>
+          <span class="pmain">
+            <span class="pt">Local &amp; AI search</span>
+            <span class="ps">Two separate battlegrounds: the map results, and the growing number of patients who start with ChatGPT instead of a search box.</span>
+          </span>
+          <span class="pright"><span class="phrs">20&ndash;25<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Optimise your Google Business Profile properly &mdash; categories, services, attributes, photos, hours and seeded questions</li><li>Audit and correct your listing details across the directories that feed local results</li><li>Structure your site content so AI assistants can quote it accurately rather than guessing</li><li>Baseline whether ChatGPT, Gemini and Google&rsquo;s AI Overviews currently name Gen 5 for San Diego fertility questions, then work the gaps</li><li>Set up a regular posting cadence on the profile</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>An optimised local presence, a citation report, and ongoing tracking of whether AI tools recommend you.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">07</span>
+          <span class="pmain">
+            <span class="pt">Interactive patient tools</span>
+            <span class="ps">Most people considering treatment aren&rsquo;t ready to call. These answer the questions they&rsquo;re not comfortable asking yet.</span>
+          </span>
+          <span class="pright"><span class="phrs">35&ndash;45<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Build a cost estimator &mdash; we work out the pricing logic with you, then build the interface around it</li><li>Build an ovarian rejuvenation candidacy assessment, with the questions written from your clinical input and the result framed as &ldquo;worth a conversation&rdquo; rather than a diagnosis</li><li>Build a treatment timeline visualiser showing what a cycle actually involves, week by week</li><li>Build an egg freezing explainer using published outcome data</li><li>All mobile-first, with lead capture that doesn&rsquo;t feel like a trap</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>Four working tools embedded in your site &mdash; the kind of thing that gets shared and linked to in a way blog posts don&rsquo;t.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">08</span>
+          <span class="pmain">
+            <span class="pt">Spanish-language site</span>
+            <span class="ps">A large local audience your competitors mostly address with a translate button, in a field where language barriers genuinely matter.</span>
+          </span>
+          <span class="pright"><span class="phrs">35&ndash;45<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Properly translate all core pages &mdash; real translation reviewed for clinical accuracy, not machine output</li><li>Set up hreflang and URL structure so search engines treat it as its own content instead of a duplicate</li><li>Translate intake forms and patient-facing materials</li><li>Do Spanish keyword research and local optimisation, rather than translating English keywords</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A complete parallel site that ranks on its own.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>150&ndash;195 hrs</b></div>
+  </div>
+  <div role="tabpanel" id="panel-growth" aria-labelledby="tab-growth" hidden>
+    <h2 class="ptitle">Growth</h2>
+    <p class="blurb">Bringing more of the right people in &mdash; and knowing which effort actually did it.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">09</span>
+          <span class="pmain">
+            <span class="pt">California insurance campaign</span>
+            <span class="ps">The state&rsquo;s IVF mandate means a rolling wave of newly covered patients all year. Most of them don&rsquo;t know yet.</span>
+          </span>
+          <span class="pright"><span class="phrs">30&ndash;40<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Build the eligibility checker: someone enters their employer and plan type and gets a clear estimate of whether they&rsquo;re likely covered, with appropriate disclaimers</li><li>Research which large San Diego employers are affected and when their plans renew</li><li>Build landing pages aimed at those specific employers</li><li>Create a content hub we keep current as carrier guidance evolves</li><li>Write phone scripts and a decision guide so whoever answers gives consistent, correct answers</li><li>Prepare outreach materials for those employers&rsquo; HR and benefits teams</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A complete campaign aimed at people who just became able to afford treatment &mdash; and a phone process that doesn&rsquo;t fumble them.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">10</span>
+          <span class="pmain">
+            <span class="pt">Google Ads cleanup</span>
+            <span class="ps">You&rsquo;re already spending. Paid search in fertility is expensive, so inefficiency compounds fast.</span>
+          </span>
+          <span class="pright"><span class="phrs">18&ndash;25<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Full account audit &mdash; structure, spend, and where money is going nowhere</li><li>Mine the search terms report and build negative keyword lists to stop paying for clicks that were never going to convert</li><li>Rewrite ad copy and set up systematic testing rather than changing one line at a time</li><li>Build dedicated landing pages per ad group instead of sending paid traffic to your homepage</li><li>Audit conversion tracking to confirm it&rsquo;s measuring booked consultations, not form fills</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A restructured account, an audit report, and monthly reporting on which spend produces cycles.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">11</span>
+          <span class="pmain">
+            <span class="pt">Instagram &amp; social tracking</span>
+            <span class="ps">Right now there&rsquo;s no way to know whether a post that did well sent anyone to the site, let alone produced a consultation.</span>
+          </span>
+          <span class="pright"><span class="phrs">12&ndash;18<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Set up tracked links so every post&rsquo;s traffic is attributable</li><li>Route direct-message and comment inquiries into one place instead of someone&rsquo;s phone</li><li>Connect social traffic through to site visits and booked consults in your analytics</li><li>Build a monthly report ranking content by what actually produces inquiries</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A straight answer on what social is worth to the practice, and which posts to make more of.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">12</span>
+          <span class="pmain">
+            <span class="pt">Referral &amp; employer partnerships</span>
+            <span class="ps">Advertising costs money per click. Referral relationships cost effort once and keep producing.</span>
+          </span>
+          <span class="pright"><span class="phrs">18&ndash;25<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Build clinical material genuinely worth sending to a referring OB/GYN</li><li>Identify and prioritise target referring physicians, employers and agencies</li><li>Write outreach sequences and templates</li><li>Set up referral source tracking so you can see which relationships actually send patients</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>Materials, a target list, and tracking that shows which relationships are working.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>78&ndash;108 hrs</b></div>
+  </div>
+  <div role="tabpanel" id="panel-brand-and-content" aria-labelledby="tab-brand-and-content" hidden>
+    <h2 class="ptitle">Brand &amp; content</h2>
+    <p class="blurb">What people find while they&rsquo;re researching you &mdash; which in fertility is a long, careful process.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">13</span>
+          <span class="pmain">
+            <span class="pt">Brand positioning</span>
+            <span class="ps">You were first in the country to build an ovarian rejuvenation programme around PRP. Almost nothing about how Gen 5 presents itself makes that obvious.</span>
+          </span>
+          <span class="pright"><span class="phrs">25&ndash;35<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Work through positioning with you &mdash; what you actually want to be known for, and by whom</li><li>Map where you sit against the other San Diego clinics and where the open ground is</li><li>Write a messaging guide so your staff, your content and your advertising all describe the practice the same way</li><li>Audit visual identity across site, social and print, and write guidelines to keep it consistent</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A documented position and the materials to express it &mdash; so a patient can tell in ten seconds what makes you different.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">14</span>
+          <span class="pmain">
+            <span class="pt">Blog restart</span>
+            <span class="ps">Fifty-five posts, then silence since December. Patients in this category research for months before they call.</span>
+          </span>
+          <span class="pright"><span class="phrs">18&ndash;22<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Build a topic plan driven by the competitor analysis rather than guesswork</li><li>Research and draft each post; you review purely for medical accuracy</li><li>Optimise, publish and internally link each one</li><li>Run a refresh pass over your strongest existing posts &mdash; updating content that already ranks usually beats writing new material</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>An active blog with a repeatable process, where the only thing needed from your team is clinical review. Roughly 6 hrs per post after setup.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">15</span>
+          <span class="pmain">
+            <span class="pt">Reviews &amp; reputation system</span>
+            <span class="ps">Your reviews are among the first things a prospective patient reads. Right now they&rsquo;re doing some selling and some damage.</span>
+          </span>
+          <span class="pright"><span class="phrs">12&ndash;18<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Set up monitoring with alerts across Google, Yelp, the BBB and the fertility-specific sites</li><li>Write response templates for every scenario, built so they can never confirm someone was a patient &mdash; a line clinics cross by accident constantly</li><li>Build a review request flow timed to the right moments in the care journey</li><li>Analyse what reviewers complain about and trace each theme back to the process that&rsquo;s breaking</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>Monitoring, an approved template library your staff can use safely, and a clear read on which operational issues cost you reviews.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">16</span>
+          <span class="pmain">
+            <span class="pt">Research &amp; clinical authority</span>
+            <span class="ps">Your PRP work is something almost no other clinic can credibly write about. That&rsquo;s an asset you&rsquo;re not using.</span>
+          </span>
+          <span class="pright"><span class="phrs">20&ndash;30<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Monitor and summarise new literature on PRP, ovarian rejuvenation and diminished ovarian reserve</li><li>Support drafting for manuscripts, conference abstracts and study documentation</li><li>Analyse outcomes from your own patients &mdash; useful clinically, and it produces material others cite and link to</li><li>Turn each webinar into a blog post, a video, an FAQ section and a run of social content</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A body of authoritative content built on your own clinical work &mdash; the one advantage a competitor can&rsquo;t outspend.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>75&ndash;105 hrs</b></div>
+  </div>
+  <div role="tabpanel" id="panel-operations" aria-labelledby="tab-operations" hidden>
+    <h2 class="ptitle">Operations</h2>
+    <p class="blurb">What happens after someone becomes a patient. This fixes the complaints rather than out-marketing them.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">17</span>
+          <span class="pmain">
+            <span class="pt">Follow-up &amp; process systems</span>
+            <span class="ps">Your clinical reviews are strong. The criticism that repeats is about follow-up and organisation &mdash; which is a systems problem, not a people problem.</span>
+          </span>
+          <span class="pright"><span class="phrs">30&ndash;40<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Map the current patient journey and find exactly where handoffs break down</li><li>Build tracked handoffs at each stage of care so nothing depends on someone remembering</li><li>Write down the procedures that currently live in people&rsquo;s heads</li><li>Create onboarding documentation so a new hire is useful in weeks rather than months</li><li>Improve appointment reminders to cut no-shows, and set up a waitlist process that fills cancellations automatically</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>Process maps, an SOP library, and onboarding material that survives staff changes.</p></div>
+        </div>
+      </article>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">18</span>
+          <span class="pmain">
+            <span class="pt">Analytics &amp; attribution</span>
+            <span class="ps">Without a clear view of where people fall out, every decision about where to spend is guesswork &mdash; including which of these projects deserve your money.</span>
+          </span>
+          <span class="pright"><span class="phrs">20&ndash;30<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Audit what&rsquo;s currently being tracked and what isn&rsquo;t</li><li>Build a single dashboard covering inquiries through consultations through cycles, with the drop-off points visible</li><li>Tie marketing back to actual cycles rather than form submissions</li><li>Track which referring physicians send patients and which relationships have gone quiet</li><li>Break down cycle-level economics: payer mix, cost drivers, what&rsquo;s actually profitable</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A live dashboard plus documentation, so you can read it without us.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>50&ndash;70 hrs</b></div>
+  </div>
+  <div role="tabpanel" id="panel-ocean-cam" aria-labelledby="tab-ocean-cam" hidden>
+    <h2 class="ptitle">Ocean cam</h2>
+    <p class="blurb">Your idea. Hours below are our side only &mdash; the camera and installation are separate, and quoted by the installer.</p>
+      <article class="proj" data-open="false">
+        <button class="proj-btn" aria-expanded="false">
+          <span class="pn">19</span>
+          <span class="pmain">
+            <span class="pt">Ocean cam &mdash; web build</span>
+            <span class="ps">A live view of the Pacific from Torrey Point, on your site and listed on EarthCam.</span>
+          </span>
+          <span class="pright"><span class="phrs">18&ndash;25<span>hrs</span></span><span class="px" aria-hidden="true">+</span></span>
+        </button>
+        <div class="pbody" hidden>
+          <h4>How we&rsquo;d do it</h4>
+          <ol class="steps"><li>Assess your window photos for composition, sun angles through the year and reflection risk before anything is bought</li><li>Spec the camera and write the brief for the installer, including the network isolation requirements</li><li>Configure the stream and set exposure profiles for day, sunset and night &mdash; sunset over the Pacific is the hard case</li><li>Build the viewing page on your site: player, Gen 5 branding overlay, mobile layout</li><li>Add a daily timelapse replay and a sunset countdown</li><li>Submit to EarthCam and set up the YouTube channel</li><li>Set up separate tracking so webcam traffic doesn&rsquo;t distort your patient numbers</li></ol>
+          <div class="deliv"><h4>What you&rsquo;ll have at the end</h4><p>A live page on your site, an EarthCam listing pointing links back at you, and analytics kept clean.</p></div>
+        </div>
+      </article>
+    <div class="subtotal"><span>Everything in this section</span><b>18&ndash;25 hrs</b></div>
+  </div>
+
+  <div class="foot">
+    <h2>Before the total scares you</h2>
+    <div class="big">
+      <p><strong>Everything here together is 421&ndash;567 hours. Nobody does all of it.</strong></p>
+      <p>It&rsquo;s a menu, not a plan. Most practices pick three or four things a year. I&rsquo;ve listed everything so you can see the whole field and choose, rather than me deciding what you&rsquo;re allowed to consider.</p>
+    </div>
+    <p><strong>If you want my honest order:</strong> everything in <em>Fix first</em>, then decide. That&rsquo;s 50&ndash;64 hours, it closes the two issues carrying real risk, and the search work is measurable in Search Console &mdash; so you can judge whether to continue on evidence rather than trust.</p>
+    <p>These are estimates, not quotes. Anything over five hours gets a written estimate first, and I don&rsquo;t exceed one without your approval &mdash; if I misjudge it, that&rsquo;s mine to absorb.</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click", function(){ selectTab(t); });
+    t.addEventListener("keydown", function(e){
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if(!d) return; e.preventDefault();
+      var nx = tabs[(i+d+tabs.length)%tabs.length]; selectTab(nx); nx.focus();
+    });
+  });
+
+  var projs = [].slice.call(document.querySelectorAll(".proj"));
+  function setOpen(p,open){
+    p.setAttribute("data-open", String(open));
+    p.querySelector(".proj-btn").setAttribute("aria-expanded", String(open));
+    p.querySelector(".pbody").hidden = !open;
+    p.querySelector(".px").textContent = open ? "\u2013" : "+";
+  }
+  projs.forEach(function(p){
+    p.querySelector(".proj-btn").addEventListener("click", function(){
+      setOpen(p, p.getAttribute("data-open") !== "true"); sync();
+    });
+  });
+  var toggle = document.getElementById("toggleAll");
+  function allOpen(){ return projs.every(function(p){ return p.getAttribute("data-open")==="true"; }); }
+  function sync(){ var o=allOpen(); toggle.textContent = o ? "Close all" : "Open all"; toggle.setAttribute("aria-expanded", String(o)); }
+  toggle.addEventListener("click", function(){ var o=!allOpen(); projs.forEach(function(p){ setOpen(p,o); }); sync(); });
+  sync();
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var KEY = "g5-theme";
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+
+  function current() {
+    var attr = root.getAttribute("data-theme");
+    if (attr) return attr;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  document.getElementById("themeToggle").addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
