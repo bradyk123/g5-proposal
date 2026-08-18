@@ -77,6 +77,31 @@
     margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
     font-size: .85rem; color: var(--ink-faint);
   }
+
+  .sun-row {
+    margin-top: 1.6rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: .8rem;
+  }
+  .sun-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 6px;
+    padding: .9rem 1rem;
+  }
+  .sun-card dt { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .sun-card dd { margin-top: .3rem; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .section-h {
+    margin-top: 2.4rem; font-family: var(--serif); font-weight: 600; font-size: 1.15rem;
+    padding-bottom: .5rem; border-bottom: 1px solid var(--rule);
+  }
+  .timelapse-frame {
+    margin-top: 1.2rem; aspect-ratio: 16/9; background: #0a0f0e; border-radius: 8px;
+    border: 1px solid var(--rule); overflow: hidden; position: relative;
+  }
+  .timelapse-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .timelapse-frame .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: .5rem; padding: 2rem; text-align: center;
+    color: #cfd8d5; font-family: var(--mono); font-size: .8rem; line-height: 1.6; }
+  .timelapse-frame .placeholder b { color: #fff; font-family: var(--serif); font-size: 1rem; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -115,6 +140,24 @@
     <span id="statusText">Offline — placeholder shown</span>
   </div>
 
+
+  <div class="sun-row" id="sunRow">
+    <div class="sun-card"><dt>Sunset today</dt><dd id="sunsetTime">&mdash;</dd></div>
+    <div class="sun-card"><dt>Time remaining</dt><dd id="sunsetCountdown">&mdash;</dd></div>
+  </div>
+
+  <h2 class="section-h">Today&rsquo;s time-lapse</h2>
+  <div class="timelapse-frame" id="timelapseFrame">
+    <!--
+      SWAP IN once today's window time-lapse is exported from the phone:
+      <video src="timelapse-2026-08-18.mp4" controls muted playsinline poster="timelapse-poster.jpg"></video>
+      then delete the placeholder <div> below.
+    -->
+    <div class="placeholder">
+      <b>No time-lapse uploaded yet</b>
+      <span>Export today&rsquo;s clip from the phone and drop the file in this folder,<br>then follow the comment above to wire it in.</span>
+    </div>
+  </div>
   <div class="note">
     <b>To go live:</b> once OBS shows "Streaming" and YouTube Studio shows your stream as live, copy the video ID from the YouTube watch URL (the part after <code>watch?v=</code>). Then follow the 3 steps in the comment above the player — swap the iframe in, remove the placeholder, and flip the status dot to live. All three, or the page will look done but still say Offline.
   </div>
@@ -122,5 +165,64 @@
   <footer>Internal test page — noindexed, not linked from the public site.</footer>
 
 </div>
+
+<script>
+(function () {
+  "use strict";
+  // Torrey Point, San Diego, CA
+  var LAT = 32.9127, LON = -117.2542;
+
+  function sunsetToday(date, lat, lon) {
+    // Sunrise equation (Wikipedia). J2000 epoch = 2451545.0 = 2000-01-01 12:00 UTC.
+    var rad = Math.PI / 180, deg = 180 / Math.PI, J2000 = 2451545.0;
+
+    // Julian day at 12:00 UTC for date's UTC calendar day (n must be a whole-day count,
+    // not the exact fractional time-of-day — that was the bug in the first version,
+    // which made "n" drift by up to a day and could return a sunset already in the past).
+    var noonUTC = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 12, 0, 0);
+    var JD = noonUTC / 86400000 + 2440587.5;
+    var n = Math.round(JD - J2000 + 0.0009);
+
+    var Jstar = n - lon / 360;
+    var M = (357.5291 + 0.98560028 * Jstar) % 360;
+    var Mr = M * rad;
+    var C = 1.9148 * Math.sin(Mr) + 0.0200 * Math.sin(2 * Mr) + 0.0003 * Math.sin(3 * Mr);
+    var lam = (M + C + 180 + 102.9372) % 360;
+    var lamR = lam * rad;
+    var Jtransit = J2000 + Jstar + 0.0053 * Math.sin(Mr) - 0.0069 * Math.sin(2 * lamR);
+
+    var sinDec = Math.sin(lamR) * Math.sin(23.44 * rad);
+    var dec = Math.asin(sinDec);
+    var phi = lat * rad;
+    var cosH = (Math.sin(-0.833 * rad) - Math.sin(phi) * Math.sin(dec)) / (Math.cos(phi) * Math.cos(dec));
+    if (cosH > 1 || cosH < -1) return null; // sun never sets/rises — not a real case at this latitude
+    var H = deg * Math.acos(cosH);
+
+    var Jset = Jtransit + H / 360;
+    return new Date((Jset - 2440587.5) * 86400000);
+  }
+
+  function fmtTime(d) {
+    return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+  function fmtCountdown(ms) {
+    if (ms <= 0) return "Past sunset";
+    var h = Math.floor(ms / 3600000);
+    var m = Math.floor((ms % 3600000) / 60000);
+    var s = Math.floor((ms % 60000) / 1000);
+    return h + "h " + String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
+  }
+
+  function tick() {
+    var now = new Date();
+    var sunset = sunsetToday(now, LAT, LON);
+    if (!sunset) return;
+    document.getElementById("sunsetTime").textContent = fmtTime(sunset);
+    document.getElementById("sunsetCountdown").textContent = fmtCountdown(sunset - now);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
