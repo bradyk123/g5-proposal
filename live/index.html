@@ -145,31 +145,26 @@
 
   <!--
     ============================================================
-    TO GO LIVE — do these 3 things together, in this block only:
-    1. Uncomment the <iframe> below and put your video ID in its src
-    2. Delete (or comment out) the <div class="placeholder"> block
-    3. Change class="dot" to class="dot live" and update the text
-       in <span id="statusText"> to "Live"
+    WIRED LIVE 2026-08-20 — video ID FIUMbpuc1X8
+    To point at a different broadcast, change the ID in the iframe
+    src below. To go back to an offline state, restore the
+    placeholder div, drop "live" from class="dot live", and set
+    <span id="statusText"> back to "Offline". All three together,
+    or the page looks connected but the status text contradicts it.
     ============================================================
   -->
   <div class="player">
-    <!--
     <iframe
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1"
+      src="https://www.youtube.com/embed/FIUMbpuc1X8?autoplay=1&amp;mute=1"
       title="Gen 5 Ocean View — Live"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
-    -->
-    <div class="placeholder" id="placeholder">
-      <b>Stream not connected yet</b>
-      <span>Waiting on a live YouTube video ID from OBS →<br>paste it into the iframe src above in this file.</span>
-    </div>
   </div>
 
   <div class="status">
-    <span class="dot" id="statusDot"></span>
-    <span id="statusText">Offline — placeholder shown</span>
+    <span class="dot live" id="statusDot"></span>
+    <span id="statusText">Live</span>
   </div>
 
 
@@ -189,9 +184,6 @@
       <b>No time-lapse uploaded yet</b>
       <span>Export today&rsquo;s clip from the phone and drop the file in this folder,<br>then follow the comment above to wire it in.</span>
     </div>
-  </div>
-  <div class="note">
-    <b>To go live:</b> once OBS shows "Streaming" and YouTube Studio shows your stream as live, copy the video ID from the YouTube watch URL (the part after <code>watch?v=</code>). Then follow the 3 steps in the comment above the player — swap the iframe in, remove the placeholder, and flip the status dot to live. All three, or the page will look done but still say Offline.
   </div>
 
   <footer>Internal test page — noindexed, not linked from the public site.</footer>
